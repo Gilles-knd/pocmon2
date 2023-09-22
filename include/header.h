@@ -5,8 +5,8 @@
 
 
 
-#ifndef PO_C_MON_STRUCT_H
-#define PO_C_MON_STRUCT_H
+#ifndef POCMON_STRUCT_H
+#define POCMON_STRUCT_H
 
 typedef struct Pokemon{
     char* name;
@@ -15,6 +15,7 @@ typedef struct Pokemon{
     int defense;
     int speed;
     char * type;
+    int maxHeal;
 }Pokemon;
 
 typedef struct AllPokemon{
@@ -25,7 +26,7 @@ typedef struct AllPokemon{
 int verifLife(int pvPokemon);
 
 typedef struct Team{
-    Pokemon pokeTeam[6];
+    Pokemon **pokeTeam;
     int size;
 }Team;
 
@@ -34,6 +35,14 @@ typedef struct Player{
     Team *team;
     int nbPoke;
 }Player;
-
 AllPokemon *readcsv (char *fileName);
+Pokemon *newPokemon(char *name, int pv, int attack, int defense, int speed, char * type);
+Pokemon *pokestart();
+void addPokemonTeam(Team *team,Pokemon *pokemon);
+void deleteTeam(Team *team);
+void displayPokemonTeam(Team *team);
+Team *newTeam();
+Pokemon *randompok();
+int playerTurn(Pokemon* teamPokemon, Pokemon* randomPokemon);
+
 #endif //PO_C_MON_STRUCT_H

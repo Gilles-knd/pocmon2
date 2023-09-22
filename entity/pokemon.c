@@ -21,6 +21,7 @@ Pokemon *newPokemon(char *name, int pv, int attack, int defense, int speed, char
     pokemon->type=malloc(sizeof (char)* (strlen(type)+1));
     strcpy(pokemon->type,type);
     strcpy(pokemon->name,name);
+    pokemon->maxHeal=pv;
     return pokemon;
 }
 
